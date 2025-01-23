@@ -4,9 +4,10 @@ Create Product Attributes:
 Go to Products > Attributes in the WordPress dashboard.
 Create the following attributes:
 Metal Type (values: Gold, Silver)
-Purity (values: 24K, 22K, 18K, Sterling Silver, etc.)
-Assign Attributes to Products:
 
+Purity (values: 24K, 22K, 18K, Sterling Silver, etc.)
+
+Assign Attributes to Products:
 While creating or editing a product, assign these attributes under the Attributes section.
 Ensure these attributes are set as visible on the product page and used for variations.
 
@@ -158,5 +159,3 @@ All products will now dynamically calculate their prices based on the updated gl
 - **Time-Saving**: Eliminates the need to manually update each product when prices change.
 
 ---
-
-Let me know if you need help implementing this!
