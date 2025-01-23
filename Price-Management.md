@@ -3,8 +3,8 @@ Create Product Attributes:
 
 Go to Products > Attributes in the WordPress dashboard.
 Create the following attributes:
-Metal Type (values: Gold, Silver)
 
+Metal Type (values: Gold, Silver)
 Purity (values: 24K, 22K, 18K, Sterling Silver, etc.)
 
 Assign Attributes to Products:
