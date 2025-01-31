@@ -5,7 +5,7 @@ Go to Products > Attributes in the WordPress dashboard.
 Create the following attributes:
 
 Metal Type (values: Gold, Silver)
-Purity (values: 24K, 22K, 18K, Sterling Silver, etc.)
+Purity (values: 22K, 21K, 18K, Sterling Silver, etc.)
 
 Assign Attributes to Products:
 While creating or editing a product, assign these attributes under the Attributes section.
@@ -62,8 +62,8 @@ function metal_prices_page() {
 add_action('admin_init', 'register_metal_prices_settings');
 function register_metal_prices_settings() {
     // Gold Prices
-    register_setting('metal_prices_settings', 'gold_24k_price_per_gram');
     register_setting('metal_prices_settings', 'gold_22k_price_per_gram');
+    register_setting('metal_prices_settings', 'gold_21k_price_per_gram');
     register_setting('metal_prices_settings', 'gold_18k_price_per_gram');
 
     // Silver Prices
@@ -71,8 +71,8 @@ function register_metal_prices_settings() {
 
     // Settings sections and fields
     add_settings_section('gold_prices_section', 'Gold Prices', null, 'metal-prices');
-    add_settings_field('gold_24k', 'Gold 24K (per gram)', 'gold_24k_field', 'metal-prices', 'gold_prices_section');
     add_settings_field('gold_22k', 'Gold 22K (per gram)', 'gold_22k_field', 'metal-prices', 'gold_prices_section');
+    add_settings_field('gold_21k', 'Gold 21K (per gram)', 'gold_21k_field', 'metal-prices', 'gold_prices_section');
     add_settings_field('gold_18k', 'Gold 18K (per gram)', 'gold_18k_field', 'metal-prices', 'gold_prices_section');
 
     add_settings_section('silver_prices_section', 'Silver Prices', null, 'metal-prices');
@@ -80,14 +80,14 @@ function register_metal_prices_settings() {
 }
 
 // Callback functions for the fields
-function gold_24k_field() {
-    $value = get_option('gold_24k_price_per_gram', '');
-    echo '<input type="text" name="gold_24k_price_per_gram" value="' . esc_attr($value) . '" />';
-}
-
 function gold_22k_field() {
     $value = get_option('gold_22k_price_per_gram', '');
     echo '<input type="text" name="gold_22k_price_per_gram" value="' . esc_attr($value) . '" />';
+}
+
+function gold_21k_field() {
+    $value = get_option('gold_21k_price_per_gram', '');
+    echo '<input type="text" name="gold_21k_price_per_gram" value="' . esc_attr($value) . '" />';
 }
 
 function gold_18k_field() {
@@ -111,7 +111,7 @@ add_filter('woocommerce_get_price', 'dynamic_metal_price_from_global_settings', 
 function dynamic_metal_price_from_global_settings($price, $product) {
     // Get the metal type and purity from the product attributes
     $metal_type = $product->get_attribute('Metal Type'); // Example: "Gold", "Silver"
-    $purity = $product->get_attribute('Purity'); // Example: "24K", "22K", "18K", "Sterling Silver"
+    $purity = $product->get_attribute('Purity'); // Example: "22K", "21K", "18K", "Sterling Silver"
 
     // Get the weight of the product (in grams)
     $weight = (float) $product->get_weight();
@@ -120,10 +120,10 @@ function dynamic_metal_price_from_global_settings($price, $product) {
     $price_per_gram = 0;
 
     if ($metal_type === 'Gold') {
-        if ($purity === '24K') {
-            $price_per_gram = get_option('gold_24k_price_per_gram', 0);
-        } elseif ($purity === '22K') {
+        if ($purity === '22K') {
             $price_per_gram = get_option('gold_22k_price_per_gram', 0);
+        } elseif ($purity === '21K') {
+            $price_per_gram = get_option('gold_21k_price_per_gram', 0);
         } elseif ($purity === '18K') {
             $price_per_gram = get_option('gold_18k_price_per_gram', 0);
         }
