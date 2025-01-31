@@ -49,6 +49,12 @@ Setting up a WooCommerce website for your jewelry business can help you effectiv
    - **Social Sharing**: Social Snap or Monarch to add share buttons.
    - **Performance**: WP Rocket or LiteSpeed Cache for faster loading.
 
+### 6. **How to Use a Custom Plugin?**
+   - Step 1: Create a Plugin File
+   - Go to wp-content/plugins/
+   - Create a new folder called metal-prices
+   - Inside the folder, create a file: metal-prices.php
+   - Paste the full code inside it.
 ---
 
 ### 6. **Customize Your Website**
